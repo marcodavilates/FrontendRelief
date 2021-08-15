@@ -23,7 +23,16 @@ export class ApiService {
     return this.http.get<Video[]>(this.apiUrl);
   }
 
-  //deleteTask(task: Task): Observable<Task> {
+  getBookmarks(): Observable<Video[]> {
+    return this.http.get<Video[]>(this.apiUrl+"bookmarks");
+  }
+
+  addTask(video: Video): Observable<Video> {
+
+    return this.http.post<Video>(this.apiUrl, video, httpHeaderContent);
+  
+  }
+    //deleteTask(task: Task): Observable<Task> {
   //  const url = `${this.apiUrl}/${task.id}`;
   // return this.http.delete<Task>(url);
   //}
@@ -33,8 +42,7 @@ export class ApiService {
   //  return this.http.put<Task>(url, task, httpOptions);
   //}
 
-  //addTask(task: Task): Observable<Task> {
-  //  return this.http.post<Task>(this.apiUrl, task, httpOptions);
+  //
   //}
 
 }

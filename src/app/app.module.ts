@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { VideoViewComponent } from './components/video-view/video-view.component';
 import { HistoryComponent } from './components/history/history.component';
+import { BookmarksComponent } from './components/bookmarks/bookmarks.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchBarComponent,
     VideoViewComponent,
-    HistoryComponent
+    HistoryComponent,
+    BookmarksComponent
   ],
   imports: [
     BrowserModule,

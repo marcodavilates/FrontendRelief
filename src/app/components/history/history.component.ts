@@ -14,8 +14,7 @@ export class HistoryComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.apiService.getHistory().subscribe((data: Video[]) => (this.videos = data));
-    
+    this.apiService.getHistory().subscribe((videos: Video[]) => (this.videos = videos));
   }
 
 }

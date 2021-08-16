@@ -6,15 +6,15 @@
     </div>
     <br>
     <div class="row">
-        <div class="col-md-2 ">
-            <app-history></app-history>
+        <div class="col-md-3 ">
+            <app-history [newEntryHistory]='urlView' (videoService)=reproduceVideo($event)></app-history>
         </div>
-        <div class="col-md-8 ">
-            <app-video-view [linkVideo]='urlID'>
+        <div class="col-md-6">
+            <app-video-view [linkVideo]='urlView' (updateBookmark)=updateBookmark($event)>
             </app-video-view>
         </div>
-        <div class="col-md-2 ">
-            <app-bookmarks></app-bookmarks>
+        <div class="col-md-3 ">
+            <app-bookmarks [bookmarkUrl]='urlBookmark' (videoService)=reproduceVideo($event)></app-bookmarks>
         </div>
     </div>
 </div>

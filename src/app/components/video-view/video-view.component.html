@@ -1,4 +1,19 @@
-<div class="video">
-    <iframe *ngIf='test' width="750" height="420" [src]='safeURL'  frameborder="0" allowfullscreen></iframe>
-   
+<div *ngIf='emptyURL' class="video">
+    <div class="row">
+        <div class="col-12">
+            <iframe  width="550" height="320" [src]='safeURL'  frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="d-grid gap-2 d-md-flex justify-content-center">
+                <button 
+                class="{{ videoEmbed.bookmark ? 'btn btn-danger':'btn btn-primary' }}" 
+                type="button"
+                (click)="bookmark()">
+                {{ videoEmbed.bookmark ? 'Remove from Bookmarks' : 'Add to Bookmarks' }}
+                </button>
+              </div>
+        </div>
+    </div>
 </div>

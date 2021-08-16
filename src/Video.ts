@@ -1,4 +1,4 @@
 export interface Video {
-    urlVideo: URL;
+    urlVideo: string;
     bookmark: boolean;
   }

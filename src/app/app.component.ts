@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {SafeUrl } from '@angular/platform-browser';
-
+import { Video } from '../Video';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +9,21 @@ import {SafeUrl } from '@angular/platform-browser';
 })
 export class AppComponent {
   title = 'ReliefApp';
-  urlID : string = "";
-  reproduceVideo(text: string){
-    this.urlID = text
+  urlView : Video = {
+    urlVideo :"",
+    bookmark : true,
+  };
+  urlBookmark : Video = {
+    urlVideo :"",
+    bookmark : true,
+  };
+
+
+  reproduceVideo(video: Video){
+    this.urlView = video;
+  }
+  updateBookmark(video:Video){
+    this.urlBookmark = video;
   }
 
 }

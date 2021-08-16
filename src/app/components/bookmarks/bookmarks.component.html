@@ -1,2 +1,6 @@
 <h3>Bookmarks</h3>
-<p *ngFor="let bookmark of bookmarks">{{bookmark.urlVideo}}</p>
+<ul class="nav flex-column">
+    <li *ngFor="let bookmark of bookmarks" class="nav-item">
+      <a class="nav-link" href="#" (click)="showurl(bookmark)">{{bookmark.urlVideo}}</a>
+    </li>
+  </ul>

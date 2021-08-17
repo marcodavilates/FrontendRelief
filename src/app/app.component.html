@@ -2,7 +2,7 @@
     <app-search-bar (resultURL)=reproduceVideo($event)></app-search-bar>
     <br>
     <div class="row">
-        <div class="col-md-3 ">
+        <div class="col-md-3" id="history">
             <app-history [newEntryHistory]='urlView' (videoService)=reproduceVideo($event)></app-history>
         </div>
         <div class="col-md-6">

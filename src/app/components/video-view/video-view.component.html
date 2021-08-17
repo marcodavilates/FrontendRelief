@@ -8,10 +8,10 @@
         <div class="col-12">
             <div class="d-grid gap-2 d-md-flex justify-content-center">
                 <button id="btn-bookmark"
-                class="{{ videoEmbed.bookmark ? 'btn btn-danger':'btn btn-primary' }}" 
+                class="{{ linkVideo.bookmark ? 'btn btn-danger':'btn btn-primary' }}" 
                 type="button"
                 (click)="bookmark()">
-                {{ videoEmbed.bookmark ? 'Remove from Bookmarks' : 'Add to Bookmarks' }}
+                {{ linkVideo.bookmark ? 'Remove from Bookmarks' : 'Add to Bookmarks' }}
                 </button>
               </div>
         </div>

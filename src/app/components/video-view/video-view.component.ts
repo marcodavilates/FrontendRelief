@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges, Output, EventEmitter} from '@angular/core';
+import { Component, Input, OnChanges, Output, EventEmitter} from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Video } from '../../../Video';
 import { ApiService } from '../../services/api.service';
@@ -14,32 +14,38 @@ import { ApiService } from '../../services/api.service';
 export class VideoViewComponent implements OnChanges {
 
   @Output() updateBookmark : EventEmitter<Video> = new EventEmitter();
+  
   @Input() linkVideo  : Video = {
         urlVideo : "",
         bookmark : false
       };
 
-  videoEmbed : Video = {
-    urlVideo : "",
-    bookmark : false
-  };
 
   emptyURL : boolean = false;
+
   safeURL: SafeUrl ="";
+
+
   constructor(private sanitizer: DomSanitizer, private apiService: ApiService) {
    }
 
-   ngOnChanges(changes: SimpleChanges): void{
-    this.videoEmbed = changes.linkVideo.currentValue;
-    this.emptyURL = this.videoEmbed.urlVideo != ""; 
-    this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/"+this.videoEmbed.urlVideo.split("=")[1]+"?autoplay=1");
+   ngOnChanges(): void{
+
+    //check if the input is filled
+
+    this.emptyURL = this.linkVideo.urlVideo != ""; 
+    //Sanitizing the URL, to add the embed URL in the HTML file
+    this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/"+this.linkVideo.urlVideo.split("=")[1]+"?autoplay=1");
   }
 
+  //Update the value of the bookmarks
   bookmark(){
-    this.videoEmbed.bookmark = !this.videoEmbed.bookmark;
-    this.apiService.updateBookmarks(this.videoEmbed).subscribe((video: Video) => {
-      this.videoEmbed = video;
-      this.updateBookmark.emit(this.videoEmbed);
+    //Changing the value of the bookmarks
+    this.linkVideo.bookmark = !this.linkVideo.bookmark;
+    //PUT Request to the backend to update bookmarks
+    this.apiService.updateBookmarks(this.linkVideo).subscribe((video: Video) => {
+      this.linkVideo = video;
+      this.updateBookmark.emit(this.linkVideo);
     });
   }
 

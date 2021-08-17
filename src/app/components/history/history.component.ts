@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input, SimpleChanges, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter} from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { Video } from '../../../Video';
 
@@ -10,6 +10,7 @@ import { Video } from '../../../Video';
 export class HistoryComponent implements OnInit, OnChanges {
 
   videos: Video[] = [];
+
   @Input() newEntryHistory : Video = {
         urlVideo : "",
         bookmark : false
@@ -19,15 +20,18 @@ export class HistoryComponent implements OnInit, OnChanges {
   
   constructor(private apiService: ApiService) { }
 
+
   ngOnInit(): void {
+    //Request the data of the backend
     this.apiService.getHistory().subscribe((videos: Video[]) => (this.videos = videos));
   }
 
-  ngOnChanges(changes: SimpleChanges): void{
-    if(changes.newEntryHistory.currentValue != changes.newEntryHistory.previousValue){
+  ngOnChanges(): void{
+    //Check the changes of the inputs and update the values on this.videos
       this.apiService.getHistory().subscribe((videos: Video[]) => (this.videos = videos));
-    }
   }
+
+  //Return the value of the link video clicked
 
   showurl(video:Video){
     this.videoService.emit(video);

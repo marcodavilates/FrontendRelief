@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {SafeUrl } from '@angular/platform-browser';
 import { Video } from '../Video';
 
 @Component({

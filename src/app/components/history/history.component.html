@@ -1,6 +1,6 @@
 <h3 [ngStyle]="{'text-align':'center'}">History</h3>
 <ul class="nav flex-column">
     <li *ngFor="let video of videos" class="nav-item">
-      <a class="nav-link" [ngStyle]="{padding: '5px 0', 'font-size':'14px', 'text-align':'center'}"  href="#" (click)="showurl(video)">{{video.urlVideo}}</a>
+      <a class="nav-link" [ngStyle]="{padding: '5px 0', 'font-size':'14px', 'text-align':'center'}"  (click)="showurl(video)">{{video.urlVideo}}</a>
     </li>
   </ul>

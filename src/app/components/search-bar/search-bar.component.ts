@@ -9,8 +9,6 @@ import { ApiService } from '../../services/api.service';
 })
 export class SearchBarComponent implements OnInit {
   
-  
-  video : string = "";
   urlinput : string = "";
   videoResult: Video = {
     urlVideo: "",
@@ -31,24 +29,32 @@ export class SearchBarComponent implements OnInit {
     //Url in Blank
 
     if(!this.urlinput){
-      console.log("Please Add a video URL of youtube");
+      alert("Please Add a video URL of youtube");
     }
-    
+
     // Request to a bad url
+
     else{
       if(!this.urlinput.match(/youtube\.com/)){
-        console.log("Please enter a valid URL");
+        alert("Please enter a valid URL");
       }
     //Process the URL
+
       else{
-        this.video = this.urlinput;
         this.videoResult.urlVideo = this.urlinput;
+
+        //Post Request to the backend to add videos
+
         this.apiService.addVideo(this.videoResult).subscribe((video:Video) =>{
           this.videoResult = video;
+        
+          //Emit the response of the backend to process
+
           this.resultURL.emit(this.videoResult);
         } );
 
       }
+
       //Clean the input
       this.urlinput = "";
     }
